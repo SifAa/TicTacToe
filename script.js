@@ -114,7 +114,7 @@ function gameStats() {
     // game stats using local storage
     if(localStorage.getItem('Xstat') === null){
         localStorage.setItem('Xstat', 0)
-    }
+    }  
     if(localStorage.getItem('Ostat') === null){
         localStorage.setItem('Ostat', 0)
     }
@@ -137,15 +137,21 @@ function gameStats() {
         statX = statX + 1;
         localStorage.setItem('Xstat', statX);
         xstathtml.innerHTML = statX;
+        ostathtml.innerHTML = statO;
+        dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'Player O won'){
         var statO = parseFloat(OStats);
         statO = statO + 1;
         localStorage.setItem('Ostat', statO); 
+        xstathtml.innerHTML = statX;
         ostathtml.innerHTML = statO;
+        dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'The game is a draw'){
         var statD = parseFloat(dStats);
         statD = statD + 1;
         localStorage.setItem('Dstat', statD);
+        xstathtml.innerHTML = statX;
+        ostathtml.innerHTML = statO;
         dstathtml.innerHTML = statD;
     }
 
