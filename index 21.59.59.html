@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body class="container">
+    <h1>TIC TAC TOE, 2 player</h1>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-4">
+            <div class="jumbotron">
+                <p>Player X has won: <span class="xstat"></span></p>
+                <p>Player O has won: <span class="ostat"></span></p>
+                <p>Draw: <span class="dstat"></span></p>
+            </div>
+        </div>
+        <div class="col-5">
+            <table>
+                <tbody>
+                    <tr>
+                        <td id="1">&nbsp;</td>
+                        <td id="2">&nbsp;</td>
+                        <td id="3">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="4">&nbsp;</td>
+                        <td id="5">&nbsp;</td>
+                        <td id="6">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="7">&nbsp;</td>
+                        <td id="8">&nbsp;</td>
+                        <td id="9">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <h2 id="msg">Click fields to play!</h2>
+    <button id="reset" type="submit" class="btn btn-success">Play again</button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
