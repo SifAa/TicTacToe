@@ -134,24 +134,22 @@ function gameStats() {
     var statX = parseFloat(xStats);
     var statO = parseFloat(OStats);
     var statD = parseFloat(dStats);
+    xstathtml.innerHTML = statX;
+    ostathtml.innerHTML = statO;
+    dstathtml.innerHTML = statD;
+
 
     if(msg.innerHTML === 'Player X won'){
         statX = statX + 1;
         localStorage.setItem('Xstat', statX);
         xstathtml.innerHTML = statX;
-        ostathtml.innerHTML = statO;
-        dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'Player O won'){
         statO = statO + 1;
         localStorage.setItem('Ostat', statO); 
-        xstathtml.innerHTML = statX;
         ostathtml.innerHTML = statO;
-        dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'The game is a draw'){
         statD = statD + 1;
         localStorage.setItem('Dstat', statD);
-        xstathtml.innerHTML = statX;
-        ostathtml.innerHTML = statO;
         dstathtml.innerHTML = statD;
     }
 
