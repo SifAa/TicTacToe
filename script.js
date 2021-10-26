@@ -131,23 +131,23 @@ function gameStats() {
     let xStats = localStorage.getItem('Xstat');
     let OStats = localStorage.getItem('Ostat');
     let dStats = localStorage.getItem('Dstat');
+    var statX = parseFloat(xStats);
+    var statO = parseFloat(OStats);
+    var statD = parseFloat(dStats);
 
     if(msg.innerHTML === 'Player X won'){
-        var statX = parseFloat(xStats);
         statX = statX + 1;
         localStorage.setItem('Xstat', statX);
         xstathtml.innerHTML = statX;
         ostathtml.innerHTML = statO;
         dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'Player O won'){
-        var statO = parseFloat(OStats);
         statO = statO + 1;
         localStorage.setItem('Ostat', statO); 
         xstathtml.innerHTML = statX;
         ostathtml.innerHTML = statO;
         dstathtml.innerHTML = statD;
     } else if (msg.innerHTML === 'The game is a draw'){
-        var statD = parseFloat(dStats);
         statD = statD + 1;
         localStorage.setItem('Dstat', statD);
         xstathtml.innerHTML = statX;
