@@ -30,7 +30,9 @@ msg = document.querySelector('#msg');
 
 button = document.querySelector('#reset');
 
-// gameStats();
+var xstathtml = document.querySelector('.xstat');
+var ostathtml = document.querySelector('.ostat');
+var dstathtml = document.querySelector('.dstat');
 
 // Game functions
 function play() {
@@ -47,8 +49,8 @@ function play() {
         player = 0;
     }
     fieldsPlayed.push(this.id);
+
     win();
-    gameStats();
 }
 
 function win() {
@@ -76,7 +78,11 @@ function win() {
         fieldsPlayer0.includes(3) && fieldsPlayer0.includes(5) && fieldsPlayer0.includes(7)
     ){
         // player 0 won
-        msg.innerHTML = 'Player X won';   
+        msg.innerHTML = 'Player X won';
+        let statX = localStorage.getItem('Xstat');
+        statX++;
+        localStorage.setItem('Xstat', statX);
+        xstathtml.innerHTML = statX;   
         gameOver();
     } else if (
         fieldsPlayer1.includes(1) && fieldsPlayer1.includes(2) && fieldsPlayer1.includes(3) ||
@@ -90,10 +96,18 @@ function win() {
     ){
         // player 1 won
         msg.innerHTML = 'Player O won';
+        let statO = localStorage.getItem('Ostat');
+        statO++;
+        localStorage.setItem('Ostat', statO); 
+        ostathtml.innerHTML = statO;
         gameOver();
     } else if (fieldsPlayed.length === 9) {
         // game is a draw
         msg.innerHTML = 'The game is a draw';
+        let statD = localStorage.getItem('Dstat');
+        statD++;
+        localStorage.setItem('Dstat', statD);
+        dstathtml.innerHTML = statD;
         gameOver();
     }
 }
@@ -121,40 +135,24 @@ function gameStats() {
     if(localStorage.getItem('Dstat') === null){
         localStorage.setItem('Dstat', 0)
     }
-    //const player0Stat = localStorage.Xstat ? localStorage.Xstat : 0;
-    //const player1Stat = localStorage.Ostat ? localStorage.Ostat : 0;
-    //const drawsStat = localStorage.Dstat ? localStorage.Dstat : 0;
-    const xstathtml = document.querySelector('.xstat');
-    const ostathtml = document.querySelector('.ostat');
-    const dstathtml = document.querySelector('.dstat');
 
-    let xStats = localStorage.getItem('Xstat');
-    let OStats = localStorage.getItem('Ostat');
-    let dStats = localStorage.getItem('Dstat');
-    var statX = parseFloat(xStats);
-    var statO = parseFloat(OStats);
-    var statD = parseFloat(dStats);
+    // let xStats = localStorage.getItem('Xstat');
+    // let OStats = localStorage.getItem('Ostat');
+    // let dStats = localStorage.getItem('Dstat');
+    // let statX = parseFloat(xStats);
+    // let statO = parseFloat(OStats);
+    // let statD = parseFloat(dStats);
+    let statX = localStorage.getItem('Xstat');
+    let statO = localStorage.getItem('Ostat');
+    let statD = localStorage.getItem('Dstat');
+
     xstathtml.innerHTML = statX;
     ostathtml.innerHTML = statO;
     dstathtml.innerHTML = statD;
-
-
-    if(msg.innerHTML === 'Player X won'){
-        statX = statX + 1;
-        localStorage.setItem('Xstat', statX);
-        xstathtml.innerHTML = statX;
-    } else if (msg.innerHTML === 'Player O won'){
-        statO = statO + 1;
-        localStorage.setItem('Ostat', statO); 
-        ostathtml.innerHTML = statO;
-    } else if (msg.innerHTML === 'The game is a draw'){
-        statD = statD + 1;
-        localStorage.setItem('Dstat', statD);
-        dstathtml.innerHTML = statD;
-    }
-
-
 }
+
+// initialize gamestats
+gameStats();
 
 // Game application
 for (let i = 0; i < fields.length; i++) {
